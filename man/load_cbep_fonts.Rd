@@ -15,6 +15,8 @@ the function will try to import related fonts, reporting an error if no
 members of the font family can be imported. The function loads related
 fonts to make them available for use in R. Finally, it sets a default
 font for graphical annotations in ggplot.
+
+The current CBEP Graphics font family is Montserrat.
 }
 \examples{
     load_cbep_fonts()
