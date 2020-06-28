@@ -1,0 +1,19 @@
+Package: CBEPgraphics
+Type: Package
+Title: Establish Graphic Conventions for CBEP 2020 State of the Bay
+Version: 0.1.0.9000
+Authors@R: person("Curtis", "Bohlen", email = "curtis.bohlen@maine.edu",
+  role = c("aut", "cre"))
+Maintainer: Curtis Bohlen <curtis.bohlen@maine.edu>
+Description: Casco Bay Estuary Partnership (CBEP) produces a summary of the 
+    condition of Casco Bay every five years.  This package creates tools
+    that simplify consistent graphic styles for the 2020 "State of the Bay"
+    report.
+License: License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    ggplot2,
+    extrafont,
+    ggthemes
+RoxygenNote: 7.1.0
