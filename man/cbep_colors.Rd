@@ -31,4 +31,5 @@ are not well suited to depicting continuous values.
 \examples{
     cbep_colors()
     cbep_colors()[5]
+    
 }

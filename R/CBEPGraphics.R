@@ -42,12 +42,16 @@ CBEP_COLORS2 <-  c("#303030", "#006d87", "#328a9f", "#72aebd", "#c1ca38", "#ffde
 #' @examples
 #'     cbep_colors()
 #'     cbep_colors()[5]
+#'     
+#' @export
 
 cbep_colors <- function() {
   CBEP_COLORS
   }
 
 #' @describeIn cbep_colors Alternate sequence of CBEP colors, ordered from darkest to lightest.
+#' 
+#' @export
 
 cbep_colors2 <-  function() {
   CBEP_COLORS2
@@ -61,8 +65,8 @@ cbep_colors2 <-  function() {
 #'
 #' Set up R to use CBEP preferred font family.
 #'
-#' This function loads a CBEP preferred fonts for graphics.  If necessary,
-#' the function will try to import related fonts, reporting an error if no
+#' This function loads a CBEP preferred font family for graphics.
+#' The function will try to import related fonts, reporting an error if no
 #' members of the font family can be imported. The function loads related
 #' fonts to make them available for use in R. Finally, it sets a default
 #' font for graphical annotations in ggplot.
@@ -72,6 +76,7 @@ cbep_colors2 <-  function() {
 #' @examples
 #'     load_cbep_fonts()
 #'
+#' @export
 load_cbep_fonts <- function() {
   # Test if the font is already installed/  If not, try to install it.
   #print('Starting  function')
@@ -107,6 +112,8 @@ load_cbep_fonts <- function() {
 #'
 #' @examples
 #'     theme_cbep()
+#'    
+#' @export
 
 theme_cbep <- function(base_size=16,
                        base_family=FONT_FAMILY_NAME,
@@ -117,7 +124,9 @@ theme_cbep <- function(base_size=16,
 
 #' @describeIn theme_cbep This function allows one to set the
 #'     default theme for all subsequent ggplot2 graphics, rather than specifying
-#'     theme_cbep() for each ggplot2 graphic seperately.
+#'     theme_cbep() for each ggplot2 graphic separately.
+#'     
+#' @export
 
 set_cbep_default_theme <- function (...) {
   ggplot2::theme_set(theme_cbep(...))

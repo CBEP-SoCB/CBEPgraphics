@@ -32,9 +32,10 @@ the size of all text slightly.
 \itemize{
 \item \code{set_cbep_default_theme}: This function allows one to set the
 default theme for all subsequent ggplot2 graphics, rather than specifying
-theme_cbep() for each ggplot2 graphic seperately.
+theme_cbep() for each ggplot2 graphic separately.
 }}
 
 \examples{
     theme_cbep()
+   
 }
