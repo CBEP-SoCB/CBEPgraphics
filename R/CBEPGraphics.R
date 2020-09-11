@@ -1,6 +1,6 @@
 
 ###########################
-# CBEP State of the ay Graphic Defaults for 2020
+# CBEP State of the Bay Graphic Defaults for 2020
 ###########################
 
 # A lightweight package to set up and support Casco Bay Estuary Partnership
