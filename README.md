@@ -10,6 +10,48 @@ Bay Report
 This is a lightweight package to set up and support Casco Bay Estuary Partnership
 (CBEP) technical graphic standards for the 2020-2021 State of Casco Bay (SoCB).
 
+For further information o
+
+# Installing `CBEPgraphics`
+## Install `devtools`
+If you have not already installed the `devtools`package, 
+you will need to do so.
+
+On the R Command Line, enter
+
+`install.packages("devtools")`
+
+Alternatively, you can use the GUI menus in RStudio:
+
+`Tools -> Install Packages... `
+
+Then select the `devtools` package from  the enormous list 
+of packages available on CRAN, and the package will be 
+installed.
+
+## Install Package
+
+To install a package of interest from GitHub, you need 
+to specify both the "Author" and the "Package".  If you 
+have a URL to the GitHub Repo, the form of that URL is 
+`https://github.com/<Author>/<Package>`, so you have all
+the information you need.
+
+```	
+library(devtools)
+install_github("CBEP-SoCB/CBEPgraphics")
+```
+
+Or, alternatively, if you want to avoid polluting your 
+search path with an unnecessary environment associated
+with `devtools`, you can accomplish the same thing with
+the following.
+
+```
+devtools::install_github("CBEP-SoCB/CBEPgraphics")
+```
+
+# Package Contents
 Functions included in this package can be called in R Notebooks
 generating draft graphics for transmittal to the SoCB designer.
 Editing specifications in this package will affect the look of
@@ -43,7 +85,12 @@ package.
 > Winston Chang, (2014). extrafont: Tools for using fonts. R package version 0.17.
 > https://CRAN.R-project.org/package=extrafont
 
-A small warning -- R integration with fonts is a bit tricky.
+A small warning -- R integration with fonts is a bit tricky. For these functions
+to work, the Montserrat family of fonts must be available on your computer, and
+the font must be separately registered in the R font database. The package tries 
+to load the fonts to the R fonts database, but the effort is not always 
+successful.  You may need to work directly with the `extrafont` package to get
+around this problem..
 
 ## Themes
 The theme functions create a theme for use with ggplot graphics.  The theme is
