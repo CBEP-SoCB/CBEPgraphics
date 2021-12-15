@@ -31,7 +31,6 @@ of packages available on CRAN, and the package will be
 installed.
 
 ## Install Package
-
 To install a package of interest from GitHub, you need 
 to specify both the "Author" and the "Package".  If you 
 have a URL to the GitHub Repo, the form of that URL is 
@@ -51,6 +50,56 @@ the following.
 ```
 devtools::install_github("CBEP-SoCB/CBEPgraphics")
 ```
+
+## Installing Fonts
+A small warning -- R integration with fonts is a bit tricky.
+
+The `CBEPgraphics` package depends on availability of the Montserrat font 
+family. For the font functionsto work, the Montserrat family of fonts must be
+available on your computer, and the font must be separately registered in the R
+font database.
+
+The 'Montserrat' font is a free Google font available 
+[here](https://fonts.google.com/specimen/Montserrat).  Download the font family,
+then install the fonts on your computer.  Instructions for installing fonts vary
+by operating system.  On Windows, unzip the font archive, and copy the font
+files to your `Fonts` folder.  The `Fonts` folder is usually at
+`C:\Windows\Fonts`.
+
+The package tries to load the fonts to the R fonts database, via the 
+`load_cbep_fonts()` function, but the effort is not always 
+successful.  You may need to work directly with the `extrafont` package to get
+around this problem.
+
+In particular, in recent years, the `load_cbep_fonts()` command has been failing
+due to a problem in a supporting package, "Rttr2pt1", which in turn depends on
+the "ttf2pt1" program, which apparently is no longer being maintained. A 
+work-around exists, and has been posted several places online, including 
+[here](https://stackoverflow.com/questions/61204259/how-can-i-resolve-the-no-font-name-issue-when-importing-fonts-into-r-using-ext/66532692#66532692).  
+
+The heart of the work-around is force-installing an earlier version of the
+"Rttf2pt1" package, as follows:
+```
+install.packages("remotes")
+remotes::install_version("Rttf2pt1", version = "1.3.8")
+```
+
+After that, the CBEPgraphics package should run correctly. 
+
+Loading all  fonts on your system into the R font database can be time
+consuming. As a result, CBEPgraphics only installs the Montserrat fonts in the R
+font database.  If you plan to use other fonts in R, you may want to run the
+following command, which installs all available fonts to the R font database.
+
+```
+install.packages("extrafont")
+extrafont::font_import()
+```
+
+Eventually, we may migrate the package -- or a successor package, since this one
+was tied to the State of Casco Bay report -- to depend on the `showtext`
+package, which i s a more recent font package for R.  But since we have a 
+reasonable  workaround, that is not strictly necessary for the time being.
 
 # Package Contents
 Functions included in this package can be called in R Notebooks
@@ -86,50 +135,6 @@ package.
 > Winston Chang, (2014). extrafont: Tools for using fonts. R package version 0.17.
 > https://CRAN.R-project.org/package=extrafont
 
-A small warning -- R integration with fonts is a bit tricky. For these functions
-to work, the Montserrat family of fonts must be available on your computer, and
-the font must be separately registered in the R font database. 
-
-The 'Montserrat' font is a free Google font available 
-[here](https://fonts.google.com/specimen/Montserrat).  Download the font family,
-then install the fonts on your computer.  Instructions for installing fonts vary
-by operating system.  On Windows, unzip the font archive, and copy the font
-files to your `Fonts` folder.  The `Fonts` folder is usually at
-`C:\Windows\Fonts`.
-
-The package tries to load the fonts to the R fonts database, via the 
-`load_cbep_fints()` function, but the effort is not always 
-successful.  You may need to work directly with the `extrafont` package to get
-around this problem.
-
-In particular, in recent years, the `load_cbep_fonts()` command has been failing
-due to a problem in a supporting package, "Rttr2pt1", which in turn depends on
-the "ttf2pt1" program, which apparently is no longer being maintained. A 
-work-around exists, and has been posted several places online, including 
-[here](https://stackoverflow.com/questions/61204259/how-can-i-resolve-the-no-font-name-issue-when-importing-fonts-into-r-using-ext/66532692#66532692).  
-
-The heart of the work-around is force-installing an earlier version of the
-"Rttf2pt1" package, as follows:
-
-```
-install.packages("remotes")
-remotes::install_version("Rttf2pt1", version = "1.3.8")
-```
-
-After that, the CBEPgraphics package should run correctly. Loading all the fonts
-on your system into the R font database can be time consuming. CBEPgraphics only
-installs the Montserrat fonts in the R font database.  If you plan
-to use other fonts in R, you may want to run the following, which installs all
-available fonts in the R font database.
-
-```
-extrafont::font_import()
-```
-
-Eventually, we may migrate the package -- or a successor package, since this one
-was tied to the State of Casco Bay report -- to depend on the `showtext`
-package, but with this workaround, that is not strictly necessary for the time
-being.
 
 ## Themes
 The theme functions create a theme for use with ggplot graphics.  The theme is
