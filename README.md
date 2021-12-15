@@ -10,7 +10,8 @@ Bay Report
 This is a lightweight package to set up and support Casco Bay Estuary Partnership
 (CBEP) technical graphic standards for the 2020-2021 State of Casco Bay (SoCB).
 
-For further information o
+For further information on State of Casco Bay report, go the the Casco Bay
+Estuary Partnership [website]( https://cascobayestuary.org).
 
 # Installing `CBEPgraphics`
 ## Install `devtools`
@@ -87,10 +88,46 @@ package.
 
 A small warning -- R integration with fonts is a bit tricky. For these functions
 to work, the Montserrat family of fonts must be available on your computer, and
-the font must be separately registered in the R font database. The package tries 
-to load the fonts to the R fonts database, but the effort is not always 
+the font must be separately registered in the R font database. 
+
+The 'Montserrat' font is a free Google font available 
+[here](https://fonts.google.com/specimen/Montserrat).  Download the font family,
+then install the fonts on your computer.  Instructions for installing fonts vary
+by operating system.  On Windows, unzip the font archive, and copy the font
+files to your `Fonts` folder.  The `Fonts` folder is usually at
+`C:\Windows\Fonts`.
+
+The package tries to load the fonts to the R fonts database, via the 
+`load_cbep_fints()` function, but the effort is not always 
 successful.  You may need to work directly with the `extrafont` package to get
-around this problem..
+around this problem.
+
+In particular, in recent years, the `load_cbep_fonts()` command has been failing
+due to a problem in a supporting package, "Rttr2pt1", which in turn depends on
+the "ttf2pt1" program, which apparently is no longer being maintained. A 
+work-around exists, and has been posted several places online, including 
+[here](https://stackoverflow.com/questions/61204259/how-can-i-resolve-the-no-font-name-issue-when-importing-fonts-into-r-using-ext/66532692#66532692).  
+
+The heart of the work-around is force-installing an earlier version of the
+"Rttf2pt1" package, as follows:
+
+```
+install.packages("remotes")
+remotes::install_version("Rttf2pt1", version = "1.3.8")
+```
+
+After that, the CBEPgraphics package should run correctly. Loading all the fonts
+on your system into the R font database can be time consuming. CBEPgraphics only
+installs the Montserrat fonts in the R font database.  If you plan
+to use other fonts in R, you may want to run the following as well:
+
+```
+extrafont::font_import()
+```
+
+Eventually, we may migrate the package -- or a successor package, since this one
+was tied to the State of Casco BAy report -- to depend on the `showtext` 
+package, but with this workaround, that is not strictly necessary for the time being.
 
 ## Themes
 The theme functions create a theme for use with ggplot graphics.  The theme is
@@ -101,7 +138,7 @@ increase the size of the base font slightly.
 The first theme function just defines the theme, and can be used as a drop-in
 for any other ggplot theme.  The second function establishes that theme as the
 ggplot default theme, so you don't have to specify that for each graphic in a
-script for markdown file.
+script or markdown file.
 
 These two functions requires both `ggplot2` and `ggthemes` to be available.
 
