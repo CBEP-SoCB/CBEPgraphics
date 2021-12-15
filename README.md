@@ -119,7 +119,7 @@ remotes::install_version("Rttf2pt1", version = "1.3.8")
 After that, the CBEPgraphics package should run correctly. Loading all the fonts
 on your system into the R font database can be time consuming. CBEPgraphics only
 installs the Montserrat fonts in the R font database.  If you plan
-to use other fonts in R, you may want to run the following, whcih installs all
+to use other fonts in R, you may want to run the following, which installs all
 available fonts in the R font database.
 
 ```
