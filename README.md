@@ -119,15 +119,17 @@ remotes::install_version("Rttf2pt1", version = "1.3.8")
 After that, the CBEPgraphics package should run correctly. Loading all the fonts
 on your system into the R font database can be time consuming. CBEPgraphics only
 installs the Montserrat fonts in the R font database.  If you plan
-to use other fonts in R, you may want to run the following as well:
+to use other fonts in R, you may want to run the following, whcih installs all
+available fonts in the R font database.
 
 ```
 extrafont::font_import()
 ```
 
 Eventually, we may migrate the package -- or a successor package, since this one
-was tied to the State of Casco BAy report -- to depend on the `showtext` 
-package, but with this workaround, that is not strictly necessary for the time being.
+was tied to the State of Casco Bay report -- to depend on the `showtext`
+package, but with this workaround, that is not strictly necessary for the time
+being.
 
 ## Themes
 The theme functions create a theme for use with ggplot graphics.  The theme is
