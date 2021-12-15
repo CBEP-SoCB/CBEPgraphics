@@ -55,7 +55,7 @@ devtools::install_github("CBEP-SoCB/CBEPgraphics")
 A small warning -- R integration with fonts is a bit tricky.
 
 The `CBEPgraphics` package depends on availability of the Montserrat font 
-family. For the font functionsto work, the Montserrat family of fonts must be
+family. For the font functions to work, the Montserrat family of fonts must be
 available on your computer, and the font must be separately registered in the R
 font database.
 
